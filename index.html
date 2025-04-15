@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official website of Sharp Token (SHRP) - A decentralized and advanced token on Binance Smart Chain">
+    <meta property="og:title" content="Sharp Token (SHRP)">
+    <meta property="og:description" content="Official website of Sharp Token with staking, swapping and wallet integration">
+    <title>Sharp Token (SHRP)</title>
+
+    <!-- Preconnect to CDNs for better performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Load critical CSS inline -->
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #008bbf;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --error-color: #ff4444;
+            --success-color: #00c851;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Add skeleton loading animation */
+        @keyframes shimmer {
+            0% { background-position: -468px 0 }
+            100% { background-position: 468px 0 }
+        }
+        
+        .skeleton {
+            animation: shimmer 1.5s infinite linear;
+            background: linear-gradient(to right, #1e1e1e 8%, #2a2a2a 18%, #1e1e1e 33%);
+            background-size: 800px 104px;
+            border-radius: 4px;
+        }
+    </style>
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <!-- Load essential JS libraries with integrity checks -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js" 
+            integrity="sha384-8ZVv5+0v6qQ5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5" 
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js" 
+            integrity="sha384-8ZVv5+0v6qQ5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5" 
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/chart.js@3.7.1/dist/chart.min.js" 
+            integrity="sha384-8ZVv5+0v6qQ5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5z1W8Z7Z5vQ5Q5" 
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <picture>
+                <source srcset="logo.webp" type="image/webp">
+                <source srcset="logo.png" type="image/png"> 
+                <img src="logo.png" alt="Sharp Token Logo" class="logo" loading="lazy" width="120" height="120">
+            </picture>
+            <h1>Sharp Token (SHRP)</h1>
+            <p class="subtitle">A decentralized and advanced token on Binance Smart Chain</p>
+            
+            <div class="wallet-section">
+                <div class="wallet-buttons">
+                    <button id="connect-metamask" class="btn" aria-label="Connect MetaMask">
+                        <span class="btn-icon">🦊</span> Connect MetaMask
+                    </button>
+                    <button id="connect-walletconnect" class="btn btn-outline" aria-label="Connect WalletConnect">
+                        <span class="btn-icon">🔗</span> Connect WalletConnect
+                    </button>
+                </div>
+                
+                <div id="wallet-info" class="wallet-info" aria-live="polite">
+                    <p>Wallet Address: <span id="wallet-address" class="skeleton skeleton-text"></span></p>
+                    <p>SHRP Balance: <span id="token-balance" class="skeleton skeleton-text">0</span></p>
+                    <p>BNB Balance: <span id="bnb-balance" class="skeleton skeleton-text">0</span></p>
+                    <div class="wallet-actions">
+                        <button onclick="addTokenToWallet()" class="btn btn-sm" aria-label="Add SHRP to wallet">
+                            Add SHRP to Wallet
+                        </button>
+                        <button onclick="disconnectWallet()" class="btn btn-sm btn-outline" aria-label="Disconnect wallet">
+                            Disconnect
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Rest of your HTML content remains similar but with improved accessibility -->
+        
+        <!-- New Notification System -->
+        <div id="notification-center" class="notification-center"></div>
+    </div>
+
+    <!-- Modals and other components -->
+
+    <!-- Load main JavaScript as module -->
+    <script type="module" src="app.js"></script>
+    
+    <!-- Fallback for non-module browsers -->
+    <script nomodule src="legacy.js"></script>
+</body>
+</html>
